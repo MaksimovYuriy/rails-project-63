@@ -23,6 +23,20 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+  
+      - name: Install Bundler
+        run: gem install bundler
+  
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Install dependencies
+        run: make install
+
       - name: Run Rubocop
         run: make lint
       
