@@ -23,9 +23,6 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
 
-      - name: Install dependencies
-        run: make install
-
       - name: Run Rubocop
         run: make lint
       
