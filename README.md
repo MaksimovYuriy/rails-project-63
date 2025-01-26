@@ -27,8 +27,8 @@ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
 
 Пример использования:
 
-Функция form_for(user, **options, &block) принимает на вход обязательно данные о пользователе и генерирует тэг '<form></form>'
-**options - параметры тэга <form>, &block - содержимое тэга <form>
+Функция form_for(user, **options, &block) принимает на вход обязательно данные о пользователе и генерирует тэг `<form></form>`
+**options - параметры тэга `<form>`, &block - содержимое тэга `<form>`
 
 Пример блока:
 
@@ -47,9 +47,9 @@ end
 
 Результат выполнения (без переноса строки):
 
-<form action=\"#\" method=\"post\">
-    <textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>
-</form>
+`<form action=\"#\" method=\"post\">`
+    `<textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>`
+`</form>`
 
 ## Development
 
