@@ -27,6 +27,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
+
+      - name: Set execute permissions
+        run: |
+          chmod +x bin/console
   
       - name: Install Bundler
         run: gem install bundler
