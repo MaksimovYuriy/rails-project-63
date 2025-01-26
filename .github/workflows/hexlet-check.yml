@@ -22,3 +22,22 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
+      
+      - name: Set execute permissions
+        run: |
+          chmod +x bin/console
+  
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Run Tests
+        run: make test
+
+      - name: Run Rubocop
+        run: make lint
