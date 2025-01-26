@@ -21,10 +21,10 @@ module HexletCode
 
   def self.form_for(user, **options, &block)
     action_method_opts = if options[:method].nil?
-      'method="post"'
-    else
-      "method=\"#{options[:method]}\""
-    end
+                           'method="post"'
+                         else
+                           "method=\"#{options[:method]}\""
+                         end
     if options[:url].nil?
       action_method_opts = "action=\"#\" #{action_method_opts}"
     else
