@@ -7,9 +7,11 @@ require 'minitest/autorun'
 require 'minitest/power_assert'
 
 class TestHexletCode < Minitest::Test
+
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
   
   def test_form_without_options()
-    user = HexletCode::User.new(name: 'Yura')
+    user = User.new(name: 'Yura')
 
     result_string = HexletCode.form_for(user) do |f|
     end
@@ -19,7 +21,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_with_class()
-    user = HexletCode::User.new(name: 'Yura')
+    user = User.new(name: 'Yura')
 
     result_string = HexletCode.form_for(user, class: 'hexlet-form') do |f|
     end
@@ -29,12 +31,61 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_with_class_and_url()
-    user = HexletCode::User.new(name: 'Yura')
+    user = User.new(name: 'Yura')
 
     result_string = HexletCode.form_for(user, class: 'hexlet-form', url: '/profile') do |f|
     end
-    
+
     expected_string = "<form action=\"/profile\" method=\"post\" class=\"hexlet-form\"></form>"
+    assert_equal(result_string, expected_string)
+  end
+
+  def test_form_with_input1()
+    user = User.new(name: 'rob', job: 'hexlet', gender: 'm')
+
+    result_string = HexletCode.form_for(user) do |f|
+      f.input :name
+      f.input :job, as: :text
+    end
+
+    expected_string = "<form action=\"#\" method=\"post\"><input name=\"name\" type=\"text\" value=\"rob\"><textarea name=\"job\" cols=\"20\" rows=\"40\">hexlet</textarea></form>"
+    assert_equal(result_string, expected_string)
+  end
+
+  def test_form_with_input2()
+    user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+
+    result_string = HexletCode.form_for user, url: '#' do |f|
+      f.input :name, class: 'user-input'
+      f.input :job
+    end
+
+    expected_string = "<form action=\"#\" method=\"post\"><input name=\"name\" type=\"text\" value=\"rob\" class=\"user-input\"><input name=\"job\" type=\"text\" value=\"hexlet\"></form>"
+
+    assert_equal(result_string, expected_string)
+  end
+
+  def test_form_with_input3()
+    user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+
+    result_string = HexletCode.form_for user do |f|
+      f.input :job, as: :text
+    end
+
+    expected_string = "<form action=\"#\" method=\"post\"><textarea name=\"job\" cols=\"20\" rows=\"40\">hexlet</textarea></form>"
+
+    assert_equal(result_string, expected_string)
+  end
+
+  def test_form_with_input4()
+    user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+
+    result_string = HexletCode.form_for user, url: '#' do |f|
+      f.input :job, as: :text, rows: 50, cols: 50
+    end
+
+    expected_string = "<form action=\"#\" method=\"post\"><textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea></form>"
+
     assert_equal(result_string, expected_string)
   end
 end
