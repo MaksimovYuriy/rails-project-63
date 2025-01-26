@@ -27,29 +27,35 @@ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
 
 Пример использования:
 
-Функция form_for(user, **options, &block) принимает на вход обязательно данные о пользователе и генерирует тэг `<form></form>`
+Функция `form_for(user, **options, &block)` принимает на вход обязательно данные о пользователе и генерирует тэг `<form></form>`
 **options - параметры тэга `<form>`, &block - содержимое тэга `<form>`
 
 Пример блока:
 
+
+```ruby
 f.input :name
 f.input :job, as: :text
+```
 
 Первый параметр блока - поле у пользователя, as - формат поля (input, textarea), далее дополнительные параметры, при наличии
 
 Пример полного вызова функции:
 
+```ruby
 user = User.new name: 'rob', job: 'hexlet', gender: 'm'
-
 result_string = HexletCode.form_for user, url: '#' do |f|
     f.input :job, as: :text, rows: 50, cols: 50
 end
+```
 
 Результат выполнения (без переноса строки):
 
-`<form action=\"#\" method=\"post\">`
-    `<textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>`
-`</form>`
+```html
+<form action=\"#\" method=\"post\">`
+    <textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>`
+</form>`
+```
 
 ## Development
 
