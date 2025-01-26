@@ -12,8 +12,7 @@ class TestHexletCode < Minitest::Test
   def test_form_without_options
     user = User.new(name: 'Yura')
 
-    result_string = HexletCode.form_for(user) do |f|
-    end
+    result_string = HexletCode.form_for(user)
 
     expected_string = '<form action="#" method="post"></form>'
     assert_equal(result_string, expected_string)
@@ -22,8 +21,7 @@ class TestHexletCode < Minitest::Test
   def test_form_with_class
     user = User.new(name: 'Yura')
 
-    result_string = HexletCode.form_for(user, class: 'hexlet-form') do |f|
-    end
+    result_string = HexletCode.form_for(user, class: 'hexlet-form')
 
     expected_string = '<form action="#" method="post" class="hexlet-form"></form>'
     assert_equal(result_string, expected_string)
@@ -32,8 +30,7 @@ class TestHexletCode < Minitest::Test
   def test_form_with_class_and_url
     user = User.new(name: 'Yura')
 
-    result_string = HexletCode.form_for(user, class: 'hexlet-form', url: '/profile') do |f|
-    end
+    result_string = HexletCode.form_for(user, class: 'hexlet-form', url: '/profile')
 
     expected_string = '<form action="/profile" method="post" class="hexlet-form"></form>'
     assert_equal(result_string, expected_string)
@@ -48,11 +45,11 @@ class TestHexletCode < Minitest::Test
     end
 
     expected_string = '<form action="#" method="post">' \
-    '<label for="name">Name</label>' \
-    '<input name="name" type="text" value="rob">' \
-    '<label for="job">Job</label>' \
-    '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
-    '</form>'
+                      '<label for="name">Name</label>' \
+                      '<input name="name" type="text" value="rob">' \
+                      '<label for="job">Job</label>' \
+                      '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
+                      '</form>'
     assert_equal(result_string, expected_string)
   end
 
@@ -65,11 +62,11 @@ class TestHexletCode < Minitest::Test
     end
 
     expected_string = '<form action="#" method="post">' \
-    '<label for="name">Name</label>' \
-    '<input name="name" type="text" value="rob" class="user-input">' \
-    '<label for="job">Job</label>' \
-    '<input name="job" type="text" value="hexlet">' \
-    '</form>'
+                      '<label for="name">Name</label>' \
+                      '<input name="name" type="text" value="rob" class="user-input">' \
+                      '<label for="job">Job</label>' \
+                      '<input name="job" type="text" value="hexlet">' \
+                      '</form>'
 
     assert_equal(result_string, expected_string)
   end
@@ -82,9 +79,9 @@ class TestHexletCode < Minitest::Test
     end
 
     expected_string = '<form action="#" method="post">' \
-    '<label for="job">Job</label>' \
-    '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
-    '</form>'
+                      '<label for="job">Job</label>' \
+                      '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
+                      '</form>'
 
     assert_equal(result_string, expected_string)
   end
@@ -97,9 +94,9 @@ class TestHexletCode < Minitest::Test
     end
 
     expected_string = '<form action="#" method="post">' \
-    '<label for="job">Job</label>' \
-    '<textarea name="job" cols="50" rows="50">hexlet</textarea>' \
-    '</form>'
+                      '<label for="job">Job</label>' \
+                      '<textarea name="job" cols="50" rows="50">hexlet</textarea>' \
+                      '</form>'
 
     assert_equal(result_string, expected_string)
   end
@@ -114,12 +111,12 @@ class TestHexletCode < Minitest::Test
     end
 
     expected_string = '<form action="#" method="post">' \
-    '<label for="name">Name</label>' \
-    '<input name="name" type="text" value="">' \
-    '<label for="job">Job</label>' \
-    '<input name="job" type="text" value="hexlet">' \
-    '<input type="submit" value="Save">' \
-    '</form>'
+                      '<label for="name">Name</label>' \
+                      '<input name="name" type="text" value="">' \
+                      '<label for="job">Job</label>' \
+                      '<input name="job" type="text" value="hexlet">' \
+                      '<input type="submit" value="Save">' \
+                      '</form>'
 
     assert_equal(result_string, expected_string)
   end
