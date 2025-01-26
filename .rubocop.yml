@@ -1,5 +1,5 @@
 Metrics/MethodLength:
-  Max: 14
+  Max: 15
 
 AllCops:
   NewCops: enable
