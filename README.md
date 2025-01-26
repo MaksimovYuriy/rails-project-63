@@ -52,9 +52,9 @@ end
 Результат выполнения (без переноса строки):
 
 ```html
-<form action=\"#\" method=\"post\">`
-    <textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>`
-</form>`
+<form action=\"#\" method=\"post\">
+    <textarea name=\"job\" cols=\"50\" rows=\"50\">hexlet</textarea>
+</form>
 ```
 
 ## Development
