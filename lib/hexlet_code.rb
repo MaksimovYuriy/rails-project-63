@@ -43,27 +43,25 @@ module HexletCode
     def input(name, **options)
       value = @user.public_send(name)
       label = Tag.build('label', for: name) { name.capitalize }
-
       field_html = if options[:as] == :text
                      cols = options.fetch(:cols, 20)
                      rows = options.fetch(:rows, 40)
                      textarea_tag = Tag.build('textarea', name: name, cols: cols, rows: rows) { value }
                      "#{label}#{textarea_tag}"
                    else
-                     input_tag = Tag.build('input', name: name, type: 'text', value: value)
                      join_options = options.map { |key, value| "#{key}=\"#{value}\"" }.join(' ')
-                     input_tag = input_tag.sub('>', " #{join_options}>")
+                     input_tag = Tag.build('input', name: name, type: 'text', value: value).sub('>',
+                                                                                                " #{join_options}>")
                      "#{label}#{input_tag}".gsub(/\s+>/, '>')
                    end
-
       @fields = "#{@fields}#{field_html}"
     end
 
     def submit(value = nil)
       submit_field = if value.nil?
-                       '<input type="submit" value="Save">'
+                       Tag.build('input', type: 'submit', value: 'Save')
                      else
-                       "<input type=\"submit\" value=\"#{value}\">"
+                       Tag.build('input', type: 'submit', value: value.to_s)
                      end
       @fields = "#{@fields}#{submit_field}"
     end
