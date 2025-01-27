@@ -5,7 +5,6 @@ require_relative 'hexlet_code/version'
 # Модуль HexletCode позволяет создавать html-формы
 module HexletCode
   class Error < StandardError; end
-
   # Модуль HexletCode::Tag позволяет создавать простые тэги с указанием атрибутов
   module Tag
     def self.build(tag, **options, &block)
