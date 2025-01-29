@@ -8,10 +8,17 @@ require_relative 'InputBuilder'
 module HexletCode
   # Модуль HexletCode::Tag позволяет создавать простые тэги с указанием атрибутов
   module Tag
+
+    UNPAIRED = ['br', 'hr', 'img', 'link', 'input']
+
     def self.build(tag, **options, &block)
       join_options = options.map { |key, value| " #{key}=\"#{value}\"" }.join('')
       tag_options = "#{tag}#{join_options}"
-      block_given? ? "<#{tag_options}>#{block.call}</#{tag}>" : "<#{tag_options}>"
+      if UNPAIRED.include?(tag)
+        "<#{tag_options}>"
+      else
+        "<#{tag_options}>#{block.call if block_given?}</#{tag}>"
+      end
     end
   end
 
@@ -20,6 +27,6 @@ module HexletCode
     options[:method] ||= 'post'
     sort_hash = { action: options.delete(:action), method: options.delete(:method) }.merge(options)
     input_builder = InputBuilder.new(entity)
-    Tag.build('form', **sort_hash) { block.call(input_builder) if block_given? }
+    Tag.build('form', **sort_hash) { block.call(input_builder).join('') if block_given? }
   end
 end

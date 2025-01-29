@@ -5,7 +5,7 @@ require 'hexlet_code'
 class InputBuilder
   def initialize(user)
     @user = user
-    @fields = ''
+    @fields = []
   end
 
   def input(name, **options)
@@ -22,7 +22,7 @@ class InputBuilder
                                                                                                           " #{join_options}>")
                    "#{label}#{input_tag}".gsub(/\s+>/, '>')
                  end
-    @fields = "#{@fields}#{field_html}"
+    @fields << field_html
   end
 
   def submit(value = nil)
@@ -31,6 +31,6 @@ class InputBuilder
                    else
                      HexletCode::Tag.build('input', type: 'submit', value: value.to_s)
                    end
-    @fields = "#{@fields}#{submit_field}"
+    @fields << submit_field
   end
 end
