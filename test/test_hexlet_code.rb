@@ -4,7 +4,6 @@ require 'test_helper'
 require_relative '../lib/hexlet_code'
 
 require 'minitest/autorun'
-require 'minitest/power_assert'
 
 class TestHexletCode < Minitest::Test
   User = Struct.new(:name, :job, :gender, keyword_init: true)

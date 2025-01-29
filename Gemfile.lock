@@ -40,7 +40,7 @@ PLATFORMS
 
 DEPENDENCIES
   hexlet_code!
-  minitest (~> 5.16)
+  minitest
   rake (~> 13.0)
   rubocop
 
