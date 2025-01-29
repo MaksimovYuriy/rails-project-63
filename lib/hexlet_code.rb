@@ -9,11 +9,10 @@ require_relative 'HashDecoder'
 module HexletCode
   # Модуль HexletCode::Tag позволяет создавать простые тэги с указанием атрибутов
   module Tag
-
-    UNPAIRED = ['br', 'hr', 'img', 'link', 'input']
+    UNPAIRED = %w[br hr img link input].freeze
 
     def self.build(tag, **options, &block)
-      join_options = options.map { |key, value| " #{key}=\"#{value}\"" }.join('')
+      join_options = options.map { |key, value| " #{key}=\"#{value}\"" }.join
       tag_options = "#{tag}#{join_options}"
       if UNPAIRED.include?(tag)
         "<#{tag_options}>"

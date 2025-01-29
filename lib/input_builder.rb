@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'hexlet_code'
 # Класс InputBuilder позволяет генерировать input-тэги с указанными атрибутами
 class InputBuilder
   def initialize(entity)
@@ -17,18 +16,18 @@ class InputBuilder
     when :text
       options.delete(:as)
       input_hash_data[:tag_name] = 'textarea'
-      input_hash_data[:options] = {name: name, cols: 20, rows: 40}.merge(options)
+      input_hash_data[:options] = { name: name, cols: 20, rows: 40 }.merge(options)
       input_hash_data[:value] = value
     when nil
       input_hash_data[:tag_name] = 'input'
-      input_hash_data[:options] = {name: name, type: 'text', value: value}.merge(options)
+      input_hash_data[:options] = { name: name, type: 'text', value: value }.merge(options)
       input_hash_data[:value] = ''
     end
     @fields << input_hash_data
   end
 
   def submit(value = 'Save')
-    submit_hash_data = { tag_name: 'input', options: {type: 'submit', value: value} }
+    submit_hash_data = { tag_name: 'input', options: { type: 'submit', value: value } }
     @fields << submit_hash_data
   end
 end

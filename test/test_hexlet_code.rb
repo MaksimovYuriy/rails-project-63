@@ -93,13 +93,7 @@ class TestHexletCode < Minitest::Test
       f.submit
     end
 
-    expected_string = '<form action="#" method="post">' \
-                      '<label for="name">Name</label>' \
-                      '<input name="name" type="text" value="">' \
-                      '<label for="job">Job</label>' \
-                      '<input name="job" type="text" value="hexlet">' \
-                      '<input type="submit" value="Save">' \
-                      '</form>'
+    expected_string = File.read('test/fixtures/form_with_input_and_submit.html')
 
     assert_equal(result_string, expected_string)
   end
