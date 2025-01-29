@@ -2,8 +2,8 @@
 
 require_relative 'hexlet_code/version'
 
-require_relative 'InputBuilder'
-require_relative 'HashDecoder'
+require_relative 'input_builder'
+require_relative 'hash_decoder'
 
 # Модуль HexletCode позволяет создавать html-формы
 module HexletCode
