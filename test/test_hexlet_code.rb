@@ -43,12 +43,7 @@ class TestHexletCode < Minitest::Test
       f.input :job, as: :text
     end
 
-    expected_string = '<form action="#" method="post">' \
-                      '<label for="name">Name</label>' \
-                      '<input name="name" type="text" value="rob">' \
-                      '<label for="job">Job</label>' \
-                      '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
-                      '</form>'
+    expected_string = File.read('test/fixtures/form_with_input1.html')
     assert_equal(result_string, expected_string)
   end
 
@@ -60,12 +55,7 @@ class TestHexletCode < Minitest::Test
       f.input :job
     end
 
-    expected_string = '<form action="#" method="post">' \
-                      '<label for="name">Name</label>' \
-                      '<input name="name" type="text" value="rob" class="user-input">' \
-                      '<label for="job">Job</label>' \
-                      '<input name="job" type="text" value="hexlet">' \
-                      '</form>'
+    expected_string = File.read('test/fixtures/form_with_input2.html')
 
     assert_equal(result_string, expected_string)
   end
@@ -77,10 +67,7 @@ class TestHexletCode < Minitest::Test
       f.input :job, as: :text
     end
 
-    expected_string = '<form action="#" method="post">' \
-                      '<label for="job">Job</label>' \
-                      '<textarea name="job" cols="20" rows="40">hexlet</textarea>' \
-                      '</form>'
+    expected_string = File.read('test/fixtures/form_with_input3.html')
 
     assert_equal(result_string, expected_string)
   end
@@ -92,10 +79,7 @@ class TestHexletCode < Minitest::Test
       f.input :job, as: :text, rows: 50, cols: 50
     end
 
-    expected_string = '<form action="#" method="post">' \
-                      '<label for="job">Job</label>' \
-                      '<textarea name="job" cols="50" rows="50">hexlet</textarea>' \
-                      '</form>'
+    expected_string = File.read('test/fixtures/form_with_input4.html')
 
     assert_equal(result_string, expected_string)
   end
