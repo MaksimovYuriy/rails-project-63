@@ -23,7 +23,7 @@ class InputBuilder
   end
 
   def submit(value = 'Save')
-    submit_field = HexletCode::Tag.build('input', type: 'submit', value: value.to_s)
+    submit_field = HexletCode::Tag.build('input', type: 'submit', value: value)
     @fields << submit_field
   end
 end
