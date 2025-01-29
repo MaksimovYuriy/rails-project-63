@@ -9,8 +9,8 @@ module HexletCode
   # Модуль HexletCode::Tag позволяет создавать простые тэги с указанием атрибутов
   module Tag
     def self.build(tag, **options, &block)
-      join_options = options.map { |key, value| "#{key}=\"#{value}\"" }.join(' ')
-      tag_options = [tag, join_options].join(' ').to_s.rstrip
+      join_options = options.map { |key, value| " #{key}=\"#{value}\"" }.join('')
+      tag_options = "#{tag}#{join_options}"
       block_given? ? "<#{tag_options}>#{block.call}</#{tag}>" : "<#{tag_options}>"
     end
   end
