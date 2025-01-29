@@ -15,11 +15,7 @@ module HexletCode
     end
   end
 
-  def self.initialize(user)
-    @user = user
-  end
-
-  def self.form_for(user, **options, &block)
+  def self.form_for(entity, **options, &block)
     action_method_opts = if options[:method].nil?
                            'method="post"'
                          else
@@ -33,7 +29,7 @@ module HexletCode
     end
     join_options = options.map { |key, value| "#{key}=\"#{value}\"" }.join(' ')
     result = join_options.empty? ? "<form #{action_method_opts}>" : "<form #{action_method_opts} #{join_options}>"
-    input_builder = InputBuilder.new(user)
+    input_builder = InputBuilder.new(entity)
     "#{result}#{block.call(input_builder) if block_given?}</form>"
   end
 end
