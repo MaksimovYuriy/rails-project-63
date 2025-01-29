@@ -3,6 +3,7 @@
 require_relative 'hexlet_code/version'
 
 require_relative 'InputBuilder'
+require_relative 'HashDecoder'
 
 # Модуль HexletCode позволяет создавать html-формы
 module HexletCode
@@ -27,6 +28,11 @@ module HexletCode
     options[:method] ||= 'post'
     sort_hash = { action: options.delete(:action), method: options.delete(:method) }.merge(options)
     input_builder = InputBuilder.new(entity)
-    Tag.build('form', **sort_hash) { block.call(input_builder).join('') if block_given? }
+    if block_given?
+      data = block.call(input_builder)
+      HashDecoder.decode_to_html('form', sort_hash, data)
+    else
+      HashDecoder.decode_to_html('form', sort_hash)
+    end
   end
 end
