@@ -32,4 +32,7 @@ jobs:
       run: make install
     
     - name: Tests
-      run: make test
+      run: bundle exec rake test
+
+    - name: Rubocop
+      run: bundle exec rubocop
