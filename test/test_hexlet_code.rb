@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require_relative '../lib/hexlet_code'
+autoload(:HexletCode, '../lib/hexlet_code')
 
 require 'minitest/autorun'
 
