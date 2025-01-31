@@ -2,7 +2,6 @@
 
 # Класс InputBuilder позволяет генерировать input-тэги с указанными атрибутами
 class InputBuilder
-
   attr_reader :fields
 
   def initialize(entity)

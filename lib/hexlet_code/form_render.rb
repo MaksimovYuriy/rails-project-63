@@ -5,7 +5,6 @@ autoload(:Tag, 'hexlet_code/tag')
 # Класс HashDecoder позволяет декодировать хэш в удобный формат представления
 class FormRender
   def self.render_html(out_tag_name, out_tag_options, data = [])
-
     # data[0][:tag_name] - Имя тэга
     # data[0][:options] - Параметры
     # data[0][:value] || nil - Значение для парных тэгов

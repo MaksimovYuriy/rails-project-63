@@ -8,6 +8,7 @@ module Tag
     join_options = options.map { |key, value| " #{key}=\"#{value}\"" }.join
     tag_options = "#{tag}#{join_options}"
     return "<#{tag_options}>" if UNPAIRED.include?(tag)
+
     "<#{tag_options}>#{block.call if block_given?}</#{tag}>"
   end
 end
