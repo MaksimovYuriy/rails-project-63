@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Tag - позволяет сгенерировать html-тэг
+# Namespace
 module HexletCode
+  # Tag - позволяет сгенерировать html-тэг
   module Tag
     UNPAIRED = %w[br hr img link input].freeze
 

@@ -4,7 +4,6 @@ require_relative 'hexlet_code/version'
 
 # Модуль HexletCode позволяет создавать html-формы
 module HexletCode
-
   autoload(:InputBuilder, 'hexlet_code/input_builder')
   autoload(:FormRender, 'hexlet_code/form_render')
 

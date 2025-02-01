@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# Класс InputBuilder позволяет генерировать input-тэги с указанными атрибутами
+# Namespace
 module HexletCode
+  # Класс InputBuilder позволяет генерировать input-тэги с указанными атрибутами
   class InputBuilder
     attr_reader :fields
 
@@ -11,15 +12,13 @@ module HexletCode
     end
 
     def input(name, **options)
-      label_ordered_data = { tag_name: 'label', options: { for: name }, value: name.capitalize }
-      @fields << label_ordered_data
       input_ordered_data = {}
       value = @entity.public_send(name)
       case options[:as]
       when :text
         options.delete(:as)
         input_ordered_data[:tag_name] = 'textarea'
-        input_ordered_data[:options] = { name: name, cols: 20, rows: 40 }.merge(options)
+        input_ordered_data[:options] = { name: name }.merge(options)
         input_ordered_data[:value] = value
       when nil
         input_ordered_data[:tag_name] = 'input'
