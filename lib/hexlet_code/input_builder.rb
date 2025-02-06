@@ -14,22 +14,19 @@ module HexletCode
     def input(name, **options)
       input_ordered_data = {}
       value = @entity.public_send(name)
-      case options[:as]
-      when :text
-        options.delete(:as)
-        input_ordered_data[:tag_name] = 'textarea'
-        input_ordered_data[:options] = { name: name }.merge(options)
-        input_ordered_data[:value] = value
-      when nil
-        input_ordered_data[:tag_name] = 'input'
-        input_ordered_data[:options] = { name: name, type: 'text', value: value }.merge(options)
-        input_ordered_data[:value] = ''
-      end
+      input_ordered_data[:as_type] = options[:as]
+      input_ordered_data[:options] = options.except(:as)
+      input_ordered_data[:name] = name
+      input_ordered_data[:value] = value
       @fields << input_ordered_data
     end
 
     def submit(value = 'Save', **options)
-      submit_ordered_data = { tag_name: 'input', options: { type: 'submit', value: value }.merge(options) }
+      submit_ordered_data = {
+        value: value,
+        options: options,
+        as_type: :submit
+      }
       @fields << submit_ordered_data
     end
   end
