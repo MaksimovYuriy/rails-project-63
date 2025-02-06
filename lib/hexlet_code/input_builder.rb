@@ -14,7 +14,7 @@ module HexletCode
     def input(name, **options)
       input_ordered_data = {}
       value = @entity.public_send(name)
-      input_ordered_data[:as_type] = options[:as]
+      input_ordered_data[:as_type] = options.fetch(:as, :default)
       input_ordered_data[:options] = options.except(:as)
       input_ordered_data[:name] = name
       input_ordered_data[:value] = value
